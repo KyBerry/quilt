@@ -1,0 +1,28 @@
+{
+  "name": "quilt",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "tauri": "tauri",
+    "format": "prettier -w ."
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@tauri-apps/api": ">=2.0.0-rc.0",
+    "@tauri-apps/plugin-shell": ">=2.0.0-rc.0",
+    "solid-js": "^1.7.8"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": ">=2.0.0-rc.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-plugin-solid": "^2.8.0"
+  }
+}
