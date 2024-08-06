@@ -37,11 +37,42 @@ const DrawCanvas: Component = () => {
         height: Math.abs(height),
       }
 
+      context()!.strokeStyle = 'white'
       context()!.strokeRect(currentRect.x, currentRect.y, currentRect.width, currentRect.height)
+
+      // Set the style for the guidelines
+      context()!.strokeStyle = 'red'
+      context()!.lineWidth = 1
+
+      // Draw the width guideline
+      context()!.beginPath()
+      context()!.moveTo(currentRect.x, currentRect.y - 10)
+      context()!.lineTo(currentRect.x + currentRect.width, currentRect.y - 10)
+      context()!.stroke()
+
+      // Draw the height guideline
+      context()!.beginPath()
+      context()!.moveTo(currentRect.x - 10, currentRect.y)
+      context()!.lineTo(currentRect.x - 10, currentRect.y + currentRect.height)
+      context()!.stroke()
+
+      // Draw the width text
+      context()!.fillStyle = 'red'
+      context()!.textAlign = 'center'
+      const widthText = `Width: ${currentRect.width}px`
+      const widthTextX = currentRect.x + currentRect.width / 2
+      const widthTextY = currentRect.y - 26
+      context()!.fillText(widthText, widthTextX, widthTextY)
+
+      // Draw the height text
+      const heightText = `Height: ${currentRect.height}px`
+      const heightTextX = currentRect.x - 50
+      const heightTextY = currentRect.y + currentRect.height / 2
+      context()!.fillText(heightText, heightTextX, heightTextY)
     }
   }
 
-  const handleStopDrawing = (e: TMouseEvent) => {
+  const handleStopDrawing = () => {
     setIsDrawing(false)
   }
 
