@@ -1,13 +1,16 @@
 import { createSignal, onMount, onCleanup } from 'solid-js'
+
 import type { Component } from 'solid-js'
 import type { TMouseEvent } from '../../../types'
+import type { DrawCanvasProps } from './DrawCanvas.types'
+
 import styles from './DrawCanvas.module.scss'
 
 const { canvas } = styles
 
-const DrawCanvas: Component = () => {
+const DrawCanvas: Component<DrawCanvasProps> = (props) => {
   let canvasRef!: HTMLCanvasElement
-  const [dpi, setDpi] = createSignal(window.devicePixelRatio)
+  const [_dpi, setDpi] = createSignal(window.devicePixelRatio)
   const [isDrawing, setIsDrawing] = createSignal(false)
   const [startPos, setStartPos] = createSignal({ x: 0, y: 0 })
   const [context, setContext] = createSignal<CanvasRenderingContext2D>()
@@ -87,6 +90,7 @@ const DrawCanvas: Component = () => {
 
   const handleStopDrawing = () => {
     setIsDrawing(false)
+    props.setMode('select')
   }
 
   const resizeCanvas = () => {

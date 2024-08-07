@@ -16,7 +16,7 @@ const App = () => {
     <div id={container}>
       <Toolbar mode={mode} setMode={setMode} />
       <BaseCanvas />
-      {mode() !== 'select' && <DrawCanvas />}
+      {mode() !== 'select' && <DrawCanvas setMode={setMode} />}
     </div>
   )
 }
